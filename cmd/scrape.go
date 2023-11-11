@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"log"
-	"scrapeloggd/utils"
+	webscrapper "scrapeloggd/utils"
 
 	"github.com/spf13/cobra"
 )

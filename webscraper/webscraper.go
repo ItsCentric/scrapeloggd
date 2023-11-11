@@ -1,4 +1,4 @@
-package utils
+package webscraper
 
 import (
 	"errors"
