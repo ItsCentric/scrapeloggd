@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"log"
-	webscrapper "scrapeloggd/utils"
+	"scrapeloggd/webscraper"
 
 	"github.com/spf13/cobra"
 )
@@ -17,11 +17,11 @@ var scrapeCmd = &cobra.Command{
 	Long:    `Accepts a Backloggd URL pointing to a user's page`,
 	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		userPageUrl, err := utils.ProcessURL(args[0])
+		userPageUrl, err := webscraper.ProcessURL(args[0])
 		if err != nil {
 			log.Fatal(err.Error())
 		}
-		utils.ScrapeBackloggd(userPageUrl)
+		webscraper.ScrapeBackloggd(userPageUrl)
 	},
 }
 
