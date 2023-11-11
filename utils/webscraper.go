@@ -27,7 +27,7 @@ func ScrapeBackloggd(userPage string) ([]Game, error) {
 	if err != nil {
 		return []Game{}, errors.New(err.Error())
 	}
-	urlMatched, err := regexp.MatchString(`^(https?:\/\/)?(www\.)?backloggd\.com\/u\/[a-zA-Z0-9_-]+\/$`, userPage)
+	urlMatched, err := regexp.MatchString(`^(https?:\/\/)?(www\.)?backloggd\.com\/u\/[a-zA-Z0-9_-]+\/?$`, userPage)
 	if err != nil {
 		return []Game{}, errors.New("Could not execute URL regex on URL")
 	}
