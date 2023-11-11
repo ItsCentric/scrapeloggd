@@ -13,10 +13,10 @@ import (
 )
 
 type Game struct {
-	id     int64
-	title  string
-	rating int64
-	cover  string
+	Id     int64
+	Title  string
+	Rating int64
+	Cover  string
 }
 
 const GAMES_PER_PAGE float64 = 50.0
@@ -46,7 +46,6 @@ func ScrapeBackloggd(userPage string) ([]Game, error) {
 			if err != nil {
 				gameError = err
 			}
-			fmt.Printf("------------\n%s\n- ID: %d\n- Rating: %d\n- Cover: %s\n", game.title, game.id, game.rating, game.cover)
 			games = append(games, game)
 		})
 	})
@@ -113,15 +112,15 @@ func parseGame(element *colly.HTMLElement) (Game, error) {
 	}
 	ratingInt, err := strconv.ParseInt(rating, 10, 32)
 	if err != nil {
-		return Game{}, errors.New(fmt.Sprintf("Couldn't parse game rating with ID of %s: %s", id, err.Error()))
+		return Game{}, errors.New(fmt.Sprintf("Couldn't parse game Rating with ID of %s: %s", id, err.Error()))
 	}
 	cover := element.ChildAttr("div > img.card-img", "src")
 
 	return Game{
-		id:     idInt,
-		title:  title,
-		rating: ratingInt,
-		cover:  cover,
+		Id:     idInt,
+		Title:  title,
+		Rating: ratingInt,
+		Cover:  cover,
 	}, nil
 }
 
